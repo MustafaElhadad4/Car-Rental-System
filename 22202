@@ -1,0 +1,163 @@
+CREATE TABLE [Workers] (
+  [WorkerID] INT NOT NULL,
+  [FirstName] VARCHAR(50),
+  [LastNam] VARCHAR(50),
+  [Salary] INT NOT NULL,
+  [JoinDate] DATE NOT NULL ,
+  [Department] VARCHAR(50),
+  PRIMARY KEY ([WorkerID])
+);
+
+CREATE TABLE [Customers] (
+  [CustomerID] INT NOT NULL,
+  [FirstName] VARCHAR(50),
+  [LastName] VARCHAR(50),
+  [CarID] VARCHAR(50),
+  [Phone] INT NOT NULL,
+  [Address] VARCHAR(50),
+  PRIMARY KEY ([CustomerID])
+);
+
+CREATE INDEX [FK] ON  [Customers] ([CarID]);
+
+CREATE TABLE [Managers] (
+  [ManagerID] INT NOT NULL,
+  [FirstName] VARCHAR(50),
+  [LastName] VARCHAR(50),
+  [PhoneNO] INT NOT NULL,
+  PRIMARY KEY ([ManagerID])
+);
+
+CREATE TABLE [Cars] (
+  [CarID] INT NOT NULL,
+  [Model] VARCHAR(50),
+  [Quantity] INT NOT NULL,
+  [Price] INT NOT NULL,
+  [CarNumbers] VARCHAR(50),
+  PRIMARY KEY ([CarID])
+);
+
+CREATE TABLE [Admains] (
+  [AdmainID] INT NOT NULL,
+  [Name] VARCHAR(50),
+  [Phone] INT NOT NULL,
+  PRIMARY KEY ([AdmainID])
+);
+Q-1. Write an SQL query to fetch “FIRST_NAME” from Worker table using the alias name as <WORKER_NAME>
+
+Select FirstName AS WorkerName from Workers;
+
+Q-2. Write an SQL query to fetch “FIRST_NAME” from Worker table in upper case.
+
+Select upper(FirstName) from Workers;
+
+Q-3. Write an SQL query to fetch unique values of DEPARTMENT from Worker table.
+
+Select distinct Department from Workers;
+
+Q-5. Write an SQL query to find the position of the alphabet (‘a’) in the first name column ‘Amitabh’ from Workers table.
+
+Select INSTR(FIRST_NAME, BINARY'a') from Workers where FirstName = 'Amitabh';
+
+Q-6. Write an SQL query to print the FirstName from Worker table after removing white spaces from the right side.
+
+Select RTRIM(FirstName) from Workers;
+
+Q-7. Write an SQL query to print the DEPARTMENT from Worker table after removing white spaces from the left side.
+
+Select LTRIM(Department) from Worker;
+
+Q-8. Write an SQL query that fetches the unique values of DEPARTMENT from Worker table and prints its length.
+
+Select distinct length(Department) from Workers;
+
+Q-9. Write an SQL query to print the FIRST_NAME from Worker table after replacing ‘a’ with ‘A’.
+
+Select REPLACE(FIRST_NAME,'a','A') from Workers;
+
+Q-11. Write an SQL query to print all Worker details from the Worker table order by FIRST_NAME Ascending.
+
+Select * from Workers order by FirstName asc;
+
+Q-12. Write an SQL query to print all Worker details from the Worker table order by FIRST_NAME Ascending and DEPARTMENT Descending.
+
+Select * from Workers order by FirstName asc,Department desc;
+
+Q-13. Write an SQL query to print details for Workers with the first name as “Vipul” and “Satish” from Worker table.
+
+Select * from Worker where FIRST_NAME in ('Vipul','Satish');
+
+Q-14. Write an SQL query to print details of workers excluding first names, “Vipul” and “Satish” from Worker table.
+
+Select * from Workers where FIRST_NAME not in ('Vipul','Satish');
+
+Q-15. Write an SQL query to print details of Workers with DEPARTMENT name as “Admin”.
+
+Select * from Worker where DEPARTMENT like 'Admin%';
+
+Q-16. Write an SQL query to print details of the Workers whose FIRST_NAME contains ‘a’.
+
+Select * from Worker where FIRST_NAME like '%a%';
+
+Q-17. Write an SQL query to print details of the Workers whose FIRST_NAME ends with ‘a’.
+
+Select * from Worker where FIRST_NAME like '%a';
+
+
+Q-18. Write an SQL query to print details of the Workers whose FIRST_NAME ends with ‘h’ and contains six alphabets.
+
+Select * from Worker where FIRST_NAME like '_____h';
+
+Q-19. Write an SQL query to print details of the Workers whose SALARY lies between 100000 and 500000.
+
+Select * from Worker where SALARY between 100000 and 500000;
+
+Q-20. Write an SQL query to print details of the Workers who have joined in Feb’2014.
+
+Select * from Worker where year(JOINING_DATE) = 2014 and month(JOINING_DATE) = 2;
+
+
+
+
+
+
+
+--  insert statment
+
+INSERT INTO Managers VALUES(1,'Lotfy ','shawky',012222,);
+INSERT INTO Managers VALUES(2,'Saad','fathy',034440,);
+INSERT INTO Managers VALUES(3,'Tarek','omar',012255,);
+INSERT INTO Cars VALUES(1,'Fait',3, 5000 L.E',,122ssr)
+INSERT INTO Rooms VALUES(2,'Farari',1, 500000 L.E',,12S21E2);
+
+
+-- 5 update statments
+
+UPDATE Managers
+SET FirstName = 'reno'
+WHERE ManagerID = 1;
+
+UPDATE Managers
+SET LastName = 'kinakom'
+WHERE ManagerID = 2;
+
+UPDATE Managers
+SET PhoneNO = '01222222'
+WHERE ManagerID = 3;
+
+UPDATE CarS
+SET Price = '200 L.E'
+WHERE CarID = 1;
+
+UPDATE Cars
+SET Model = 'hayndi' 
+WHERE CarID = 2;
+
+
+-- 5 delete statments
+
+DELETE FROM Customer WHERE GuestID= 1;
+DELETE FROM Customer WHERE GuestID= 2;
+DELETE FROM Customer WHERE GuestID= 3;
+DELETE FROM Managers WHERE ManagerID= 1;
+DELETE FROM Managers WHERE ManagerID= 1;
